@@ -1,0 +1,341 @@
+.timeline-section {
+  background-color: #F5F3EE;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px 120px;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+}
+
+.timeline-title {
+  font-size: 2.4rem;
+  color: #2D2B55;
+  margin-bottom: 80px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.timeline-container {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  padding-bottom: 60px;
+}
+
+/* Horizontal timeline line */
+.timeline-line {
+  position: absolute;
+  bottom: 30px;
+  left: 5%;
+  right: 5%;
+  height: 3px;
+  background-color: #E0DDD6;
+  border-radius: 2px;
+}
+
+.timeline-line-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 80%;
+  background: linear-gradient(90deg, #6C63FF, #A78BFA);
+  border-radius: 2px;
+}
+
+/* Each stop wrapper */
+.timeline-stop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  max-width: 220px;
+}
+
+/* Staggered heights */
+.timeline-stop[data-height="low"] .timeline-card {
+  margin-bottom: 40px;
+}
+
+.timeline-stop[data-height="high"] .timeline-card {
+  margin-bottom: 100px;
+}
+
+.timeline-stop[data-height="medium"] .timeline-card {
+  margin-bottom: 70px;
+}
+
+/* Card */
+.timeline-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.timeline-card.visible {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.timeline-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.timeline-card.visible:hover {
+  transform: translateY(-4px);
+}
+
+.card-company {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 4px;
+}
+
+.card-role {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #6C63FF;
+  margin: 0 0 10px;
+}
+
+.card-description {
+  font-size: 0.82rem;
+  color: #777;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+
+.tag {
+  background-color: #EDEBFF;
+  color: #6C63FF;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* Vertical connector line from card to dot */
+.connector-line {
+  width: 2px;
+  background-color: #D5D3CC;
+  flex-shrink: 0;
+}
+
+.timeline-stop[data-height="low"] .connector-line {
+  height: 40px;
+}
+
+.timeline-stop[data-height="high"] .connector-line {
+  height: 100px;
+}
+
+.timeline-stop[data-height="medium"] .connector-line {
+  height: 70px;
+}
+
+/* Timeline dot */
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  border: 3px solid #F5F3EE;
+  box-shadow: 0 0 0 2px #D97706;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+/* Year label below dot */
+.timeline-year {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #2D2B55;
+}
+
+/* Chick section under first card */
+.chick-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8px;
+  position: absolute;
+  bottom: -70px;
+}
+
+.chick-emoji {
+  font-size: 1.6rem;
+  animation: bounce 2s ease infinite;
+}
+
+.chick-text {
+  font-size: 0.7rem;
+  color: #6C63FF;
+  font-weight: 600;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Animation delays for staggered entrance */
+.timeline-stop:nth-child(1) .timeline-card.visible {
+  animation-delay: 0.1s;
+}
+.timeline-stop:nth-child(2) .timeline-card.visible {
+  animation-delay: 0.25s;
+}
+.timeline-stop:nth-child(3) .timeline-card.visible {
+  animation-delay: 0.4s;
+}
+.timeline-stop:nth-child(4) .timeline-card.visible {
+  animation-delay: 0.55s;
+}
+.timeline-stop:nth-child(5) .timeline-card.visible {
+  animation-delay: 0.7s;
+}
+
+/* Responsive: mobile */
+@media (max-width: 768px) {
+  .timeline-section {
+    padding: 40px 20px 80px;
+  }
+
+  .timeline-title {
+    font-size: 1.6rem;
+    margin-bottom: 40px;
+  }
+
+  .timeline-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding-bottom: 0;
+  }
+
+  .timeline-line {
+    display: none;
+  }
+
+  .timeline-stop {
+    flex-direction: row;
+    max-width: 100%;
+    width: 100%;
+    gap: 16px;
+    padding-left: 40px;
+    margin-bottom: 32px;
+  }
+
+  .timeline-stop[data-height="low"] .timeline-card,
+  .timeline-stop[data-height="high"] .timeline-card,
+  .timeline-stop[data-height="medium"] .timeline-card {
+    margin-bottom: 0;
+  }
+
+  .timeline-stop[data-height="low"] .connector-line,
+  .timeline-stop[data-height="high"] .connector-line,
+  .timeline-stop[data-height="medium"] .connector-line {
+    height: auto;
+    width: 2px;
+    min-height: 0;
+    display: none;
+  }
+
+  .connector-line {
+    display: none;
+  }
+
+  .timeline-card {
+    text-align: left;
+    order: 2;
+    flex: 1;
+  }
+
+  .card-tags {
+    justify-content: flex-start;
+  }
+
+  .timeline-dot {
+    order: 1;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .timeline-stop::before {
+    content: '';
+    position: absolute;
+    left: 47px;
+    top: 0;
+    bottom: -32px;
+    width: 2px;
+    background-color: #D5D3CC;
+  }
+
+  .timeline-stop:last-child::before {
+    display: none;
+  }
+
+  .timeline-year {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: 0;
+    font-size: 0.75rem;
+  }
+
+  .chick-wrapper {
+    position: static;
+    flex-direction: row;
+    gap: 6px;
+    margin-top: 4px;
+    order: 3;
+  }
+
+  .chick-emoji {
+    font-size: 1.2rem;
+  }
+}
