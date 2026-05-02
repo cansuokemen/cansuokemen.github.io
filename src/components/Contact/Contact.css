@@ -1,0 +1,195 @@
+.contact {
+  padding: 100px 40px;
+  background: #F5F3EE;
+}
+
+.contact-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.contact-link-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 2px solid transparent;
+}
+
+.contact-link-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+  border-color: #6C63FF;
+}
+
+.contact-card-icon {
+  width: 52px;
+  height: 52px;
+  background: #EDEBFF;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.contact-card-label {
+  font-size: 0.75rem;
+  color: #999;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.contact-card-value {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+/* References */
+.references-title {
+  font-size: 0.8rem;
+  color: #999;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 16px;
+}
+
+.ref-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ref-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.ref-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+}
+
+.ref-card-header {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.ref-card-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ref-avatar {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #6C63FF, #A78BFA);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.ref-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 2px;
+}
+
+.ref-role {
+  font-size: 0.78rem;
+  color: #888;
+}
+
+.ref-toggle {
+  font-size: 0.8rem;
+  color: #6C63FF;
+  transition: transform 0.3s;
+}
+
+.ref-card.open .ref-toggle {
+  transform: rotate(180deg);
+}
+
+.ref-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.ref-card.open .ref-details {
+  max-height: 120px;
+}
+
+.ref-details-inner {
+  padding: 0 24px 20px;
+  border-top: 1px solid #F0EEE9;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ref-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #555;
+  margin-top: 12px;
+}
+
+.ref-detail-row a {
+  color: #6C63FF;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.ref-detail-row a:hover {
+  text-decoration: underline;
+}
+
+.footer-note {
+  text-align: center;
+  margin-top: 60px;
+  color: #aaa;
+  font-size: 0.82rem;
+}
+
+.footer-note span {
+  color: #6C63FF;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact { padding: 80px 24px; }
+}

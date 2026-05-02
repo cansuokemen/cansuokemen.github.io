@@ -1,0 +1,153 @@
+.about {
+  padding: 100px 40px;
+  background: #fff;
+}
+
+.about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.about-text h3 {
+  font-size: 1.1rem;
+  color: #6C63FF;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.about-text p {
+  color: #555;
+  line-height: 1.8;
+  font-size: 0.97rem;
+  margin-bottom: 16px;
+}
+
+.about-expand-btn {
+  background: none;
+  border: none;
+  color: #6C63FF;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s;
+}
+
+.about-expand-btn:hover {
+  gap: 10px;
+}
+
+.about-extra {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease;
+}
+
+.about-extra.open {
+  max-height: 200px;
+}
+
+.about-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stat-card {
+  background: #F5F3EE;
+  border-radius: 16px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.stat-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.stat-info strong {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #6C63FF;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-info span {
+  font-size: 0.85rem;
+  color: #777;
+  font-weight: 500;
+}
+
+.ai-badge {
+  margin-top: 24px;
+  background: linear-gradient(135deg, #6C63FF, #A78BFA);
+  color: #fff;
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.ai-badge-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.ai-badge h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.ai-badge p {
+  font-size: 0.82rem;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+.soft-skills {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.soft-tag {
+  background: #EDEBFF;
+  color: #6C63FF;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about { padding: 80px 24px; }
+}
