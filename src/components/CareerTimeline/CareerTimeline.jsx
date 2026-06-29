@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import './CareerTimeline.css';
 
 const timelineData = [
@@ -9,7 +9,6 @@ const timelineData = [
     year: '2021',
     tags: [],
     height: 'low',
-    hasChick: true,
   },
   {
     company: 'Edutes',
@@ -18,7 +17,6 @@ const timelineData = [
     year: '2023',
     tags: ['Python', 'NumPy', 'Pandas'],
     height: 'high',
-    hasChick: false,
   },
   {
     company: 'Zironsoft',
@@ -27,7 +25,6 @@ const timelineData = [
     year: '2024',
     tags: ['.NET Core', 'SQL', 'EF Core'],
     height: 'medium',
-    hasChick: false,
   },
   {
     company: 'MAN Türkiye',
@@ -36,7 +33,6 @@ const timelineData = [
     year: '2025',
     tags: ['Enterprise', 'IT Ops', 'SAP'],
     height: 'low',
-    hasChick: false,
   },
   {
     company: 'Mezuniyet',
@@ -45,13 +41,65 @@ const timelineData = [
     year: '2026',
     tags: ['Full Stack', 'AI', 'Cloud'],
     height: 'high',
-    hasChick: false,
   },
 ];
 
+function Fireworks() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    canvas.width = 200;
+    canvas.height = 200;
+
+    const particles = [];
+    const colors = ['#6C63FF', '#F59E0B', '#A78BFA', '#EC4899', '#10B981', '#F43F5E'];
+
+    for (let i = 0; i < 40; i++) {
+      const angle = (Math.PI * 2 * i) / 40;
+      const speed = 1.5 + Math.random() * 2.5;
+      particles.push({
+        x: 100, y: 100,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: 1,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        size: 2 + Math.random() * 3,
+      });
+    }
+
+    let frame;
+    const animate = () => {
+      ctx.clearRect(0, 0, 200, 200);
+      let alive = false;
+      particles.forEach(p => {
+        if (p.life <= 0) return;
+        alive = true;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.04;
+        p.life -= 0.015;
+        ctx.globalAlpha = p.life;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      if (alive) frame = requestAnimationFrame(animate);
+    };
+    animate();
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  return <canvas ref={canvasRef} className="fireworks-canvas" />;
+}
+
 export default function CareerTimeline() {
   const [visible, setVisible] = useState(false);
+  const [chickDone, setChickDone] = useState(false);
   const sectionRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -62,6 +110,10 @@ export default function CareerTimeline() {
     return () => observer.disconnect();
   }, []);
 
+  const handleChickEnd = useCallback(() => {
+    setChickDone(true);
+  }, []);
+
   return (
     <section className="timeline-section" id="timeline" ref={sectionRef}>
       <div className="section-header">
@@ -70,7 +122,7 @@ export default function CareerTimeline() {
         <p>İlk satır koddan bugüne profesyonel gelişimim</p>
       </div>
 
-      <div className="timeline-container">
+      <div className="timeline-container" ref={containerRef}>
         <div className="timeline-line">
           <div className="timeline-line-progress" />
         </div>
@@ -92,14 +144,18 @@ export default function CareerTimeline() {
             <div className="connector-line" />
             <div className="timeline-dot" />
             <span className="timeline-year">{item.year}</span>
-            {item.hasChick && (
-              <div className="chick-wrapper">
-                <span className="chick-emoji">🐣</span>
-                <span className="chick-text">yumurtadan çıktı!</span>
-              </div>
-            )}
           </div>
         ))}
+
+        {visible && (
+          <div
+            className={`walking-chick${chickDone ? ' arrived' : ''}`}
+            onAnimationEnd={handleChickEnd}
+          >
+            <span className="chick-emoji">🐥</span>
+            {chickDone && <Fireworks />}
+          </div>
+        )}
       </div>
     </section>
   );
