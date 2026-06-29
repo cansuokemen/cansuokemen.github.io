@@ -23,6 +23,7 @@
   background: #6C63FF;
   top: -100px;
   right: -100px;
+  animation: floatCircle1 8s ease-in-out infinite;
 }
 
 .hero-bg-circle.two {
@@ -31,12 +32,42 @@
   background: #F59E0B;
   bottom: 50px;
   left: -80px;
+  animation: floatCircle2 10s ease-in-out infinite;
 }
 
 .hero-content {
   text-align: center;
   max-width: 760px;
-  animation: heroFadeUp 0.9s ease forwards;
+}
+
+.hero-badge {
+  animation: heroFadeUp 0.7s ease both;
+  animation-delay: 0.1s;
+}
+
+.hero-name {
+  animation: heroFadeUp 0.7s ease both;
+  animation-delay: 0.25s;
+}
+
+.hero-role {
+  animation: heroFadeUp 0.7s ease both;
+  animation-delay: 0.4s;
+}
+
+.hero-description {
+  animation: heroFadeUp 0.7s ease both;
+  animation-delay: 0.55s;
+}
+
+.hero-actions {
+  animation: heroFadeUp 0.7s ease both;
+  animation-delay: 0.7s;
+}
+
+.hero-socials {
+  animation: heroFadeUp 0.7s ease both;
+  animation-delay: 0.85s;
 }
 
 .hero-badge {
@@ -168,7 +199,7 @@
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 500;
-  transition: color 0.2s;
+  transition: all 0.3s ease;
   padding: 6px 14px;
   border-radius: 20px;
   border: 1px solid #E0DDD6;
@@ -178,6 +209,8 @@
 .hero-social-link:hover {
   color: #6C63FF;
   border-color: #6C63FF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.15);
 }
 
 .hero-scroll {
@@ -218,6 +251,18 @@
 @keyframes scrollBounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50% { transform: translateX(-50%) translateY(6px); }
+}
+
+@keyframes floatCircle1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, 20px) scale(1.05); }
+  66% { transform: translate(-20px, -10px) scale(0.95); }
+}
+
+@keyframes floatCircle2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-25px, -15px) scale(1.08); }
+  66% { transform: translate(15px, 25px) scale(0.92); }
 }
 
 @media (max-width: 768px) {

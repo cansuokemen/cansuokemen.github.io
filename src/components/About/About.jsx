@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useScrollReveal from '../../hooks/useScrollReveal';
 import './About.css';
 
 const softSkills = [
@@ -8,18 +9,21 @@ const softSkills = [
 
 export default function About() {
   const [expanded, setExpanded] = useState(false);
+  const headerRef = useScrollReveal();
+  const textRef = useScrollReveal();
+  const statsRef = useScrollReveal();
 
   return (
     <section className="about" id="about">
       <div className="about-inner">
-        <div className="section-header">
+        <div className="section-header scroll-reveal" ref={headerRef}>
           <h2>Hakkımda</h2>
           <div className="section-line" />
           <p>Yazılım dünyasındaki yolculuğum ve kim olduğum</p>
         </div>
 
         <div className="about-grid">
-          <div className="about-text">
+          <div className="about-text scroll-reveal-left" ref={textRef}>
             <h3>Profil</h3>
             <p>
               Dördüncü yıl Yazılım Mühendisliği öğrencisiyim; back-end geliştirme ve IT operasyonlarında
@@ -49,7 +53,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="about-stats">
+          <div className="about-stats scroll-reveal-right" ref={statsRef}>
             {[
               { icon: '🎓', num: '4+', label: 'Yıl Eğitim · UTAA Software Engineering' },
               { icon: '💼', num: '3', label: 'Profesyonel Deneyim (Edutes, Zironsoft, MAN)' },

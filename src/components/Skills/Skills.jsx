@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useScrollReveal from '../../hooks/useScrollReveal';
 import './Skills.css';
 
 const categories = [
@@ -36,19 +37,21 @@ const categories = [
 
 export default function Skills() {
   const [openIdx, setOpenIdx] = useState(null);
+  const headerRef = useScrollReveal();
+  const gridRef = useScrollReveal();
 
   const toggle = (i) => setOpenIdx(prev => prev === i ? null : i);
 
   return (
     <section className="skills" id="skills">
       <div className="skills-inner">
-        <div className="section-header">
+        <div className="section-header scroll-reveal" ref={headerRef}>
           <h2>Teknik Yetenekler</h2>
           <div className="section-line" />
           <p>Kategoriye tıkla, detayları gör</p>
         </div>
 
-        <div className="skills-grid">
+        <div className="skills-grid scroll-reveal" ref={gridRef}>
           {categories.map((cat, i) => (
             <div
               className={`skill-category${openIdx === i ? ' open' : ''}`}

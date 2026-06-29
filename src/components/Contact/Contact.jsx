@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useScrollReveal from '../../hooks/useScrollReveal';
 import './Contact.css';
 
 const contactLinks = [
@@ -14,44 +15,37 @@ const references = [
     role: 'Head of IT · MAN Türkiye A.Ş.',
     initials: 'EY',
     email: 'emrah.yildiz@man.eu',
-    phone: null,
-  },
-  {
-    name: 'Emre Kunduroğlu',
-    role: 'IT Business Application Group Leader · MAN Türkiye A.Ş.',
-    initials: 'EK',
-    email: null,
-    phone: '0538 736 51 55',
   },
   {
     name: 'Dr. Aytun Onay',
     role: 'Head of Software Engineering Dept. · UTAA',
     initials: 'AO',
     email: 'aonay@thk.edu.tr',
-    phone: '0312 589 6054',
   },
   {
     name: 'Res. Asst. Sinem Seyrek Ceyran',
     role: 'Research Assistant, Software Eng. · UTAA',
     initials: 'SC',
     email: 'ssceran@ythk.edu.tr',
-    phone: '0312 589 6052',
   },
 ];
 
 export default function Contact() {
   const [openRef, setOpenRef] = useState(null);
+  const headerRef = useScrollReveal();
+  const gridRef = useScrollReveal();
+  const refsRef = useScrollReveal();
 
   return (
     <section className="contact" id="contact">
       <div className="contact-inner">
-        <div className="section-header">
+        <div className="section-header scroll-reveal" ref={headerRef}>
           <h2>İletişim</h2>
           <div className="section-line" />
           <p>Bana ulaşmak için aşağıdaki kanalları kullanabilirsin</p>
         </div>
 
-        <div className="contact-grid">
+        <div className="contact-grid scroll-reveal" ref={gridRef}>
           {contactLinks.map(link => (
             <a className="contact-link-card" href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" key={link.label}>
               <div className="contact-card-icon">{link.icon}</div>
@@ -64,7 +58,7 @@ export default function Contact() {
         </div>
 
         <p className="references-title">Referanslar</p>
-        <div className="ref-cards">
+        <div className="ref-cards scroll-reveal" ref={refsRef}>
           {references.map((ref, i) => (
             <div
               className={`ref-card${openRef === i ? ' open' : ''}`}
@@ -87,11 +81,6 @@ export default function Contact() {
                   {ref.email && (
                     <div className="ref-detail-row">
                       ✉ <a href={`mailto:${ref.email}`}>{ref.email}</a>
-                    </div>
-                  )}
-                  {ref.phone && (
-                    <div className="ref-detail-row">
-                      📞 <a href={`tel:${ref.phone.replace(/\s/g, '')}`}>{ref.phone}</a>
                     </div>
                   )}
                 </div>

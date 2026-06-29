@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useScrollReveal from '../../hooks/useScrollReveal';
 import './Education.css';
 
 const courses = [
@@ -37,18 +38,21 @@ const certs = [
 
 export default function Education() {
   const [open, setOpen] = useState(false);
+  const headerRef = useScrollReveal();
+  const mainRef = useScrollReveal();
+  const certRef = useScrollReveal();
 
   return (
     <section className="education" id="education">
       <div className="education-inner">
-        <div className="section-header">
+        <div className="section-header scroll-reveal" ref={headerRef}>
           <h2>Eğitim</h2>
           <div className="section-line" />
           <p>Akademik geçmişim ve sertifikalarım</p>
         </div>
 
         <div className="edu-grid">
-          <div className={`edu-main-card${open ? ' open' : ''}`} onClick={() => setOpen(o => !o)}>
+          <div className={`edu-main-card scroll-reveal-left${open ? ' open' : ''}`} ref={mainRef} onClick={() => setOpen(o => !o)}>
             <div className="edu-card-top">
               <div className="edu-card-left">
                 <span className="edu-degree-badge">B.Sc. · İngilizce</span>
@@ -79,7 +83,7 @@ export default function Education() {
             </div>
           </div>
 
-          <div className="cert-cards">
+          <div className="cert-cards scroll-reveal-right" ref={certRef}>
             <p style={{ fontSize: '0.8rem', color: '#999', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '4px' }}>
               Sertifikalar
             </p>
