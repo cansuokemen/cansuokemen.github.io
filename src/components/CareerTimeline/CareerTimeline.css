@@ -190,7 +190,7 @@
 .walking-chick .chick-emoji {
   font-size: 1.6rem;
   display: inline-block;
-  animation: chickWaddle 0.25s ease-in-out infinite;
+  animation: chickWaddle 0.35s ease-in-out infinite;
 }
 
 .walking-chick.arrived .chick-emoji {
@@ -215,9 +215,11 @@
 }
 
 @keyframes chickWaddle {
-  0%   { transform: translateY(0) rotate(-5deg); }
-  50%  { transform: translateY(-3px) rotate(5deg); }
-  100% { transform: translateY(0) rotate(-5deg); }
+  0%   { transform: translateY(0) rotate(0deg); }
+  30%  { transform: translateY(-10px) rotate(8deg); }
+  50%  { transform: translateY(-12px) rotate(0deg); }
+  70%  { transform: translateY(-10px) rotate(-8deg); }
+  100% { transform: translateY(0) rotate(0deg); }
 }
 
 @keyframes chickCelebrate {
