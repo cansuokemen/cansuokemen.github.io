@@ -212,92 +212,73 @@
   0%   { left: 10%; transform: translateY(0); opacity: 0; }
   2%   { opacity: 1; }
 
-  /* Crouch before hop 1 */
-  6%   { left: 10%; transform: translateY(2px); }
-  /* Hop 1: dot 1 -> dot 2 — parabolic arc */
-  9%   { left: 14%; transform: translateY(-25px); }
-  12%  { left: 20%; transform: translateY(-40px); }
-  15%  { left: 26%; transform: translateY(-25px); }
-  18%  { left: 30%; transform: translateY(0); }
-  /* Land bounce */
-  19%  { left: 30%; transform: translateY(-4px); }
-  20%  { left: 30%; transform: translateY(0); }
+  /* Hop 1: dot 1 -> dot 2 — smooth arc */
+  7%   { left: 10%; transform: translateY(0); }
+  10%  { left: 15%; transform: translateY(-20px); }
+  13%  { left: 20%; transform: translateY(-35px); }
+  16%  { left: 25%; transform: translateY(-20px); }
+  19%  { left: 30%; transform: translateY(0); }
 
-  /* Pause — look around */
-  26%  { left: 30%; transform: translateY(0); }
+  /* Pause */
+  27%  { left: 30%; transform: translateY(0); }
 
-  /* Crouch before hop 2 */
-  28%  { left: 30%; transform: translateY(2px); }
-  31%  { left: 36%; transform: translateY(-25px); }
-  34%  { left: 42%; transform: translateY(-40px); }
-  37%  { left: 47%; transform: translateY(-25px); }
-  40%  { left: 50%; transform: translateY(0); }
-  41%  { left: 50%; transform: translateY(-4px); }
-  42%  { left: 50%; transform: translateY(0); }
+  /* Hop 2: dot 2 -> dot 3 */
+  30%  { left: 35%; transform: translateY(-20px); }
+  33%  { left: 40%; transform: translateY(-35px); }
+  36%  { left: 45%; transform: translateY(-20px); }
+  39%  { left: 50%; transform: translateY(0); }
 
-  48%  { left: 50%; transform: translateY(0); }
+  /* Pause */
+  47%  { left: 50%; transform: translateY(0); }
 
-  /* Crouch before hop 3 */
-  50%  { left: 50%; transform: translateY(2px); }
-  53%  { left: 56%; transform: translateY(-25px); }
-  56%  { left: 62%; transform: translateY(-40px); }
-  59%  { left: 67%; transform: translateY(-25px); }
-  62%  { left: 70%; transform: translateY(0); }
-  63%  { left: 70%; transform: translateY(-4px); }
-  64%  { left: 70%; transform: translateY(0); }
+  /* Hop 3: dot 3 -> dot 4 */
+  50%  { left: 55%; transform: translateY(-20px); }
+  53%  { left: 60%; transform: translateY(-35px); }
+  56%  { left: 65%; transform: translateY(-20px); }
+  59%  { left: 70%; transform: translateY(0); }
 
-  70%  { left: 70%; transform: translateY(0); }
+  /* Pause */
+  67%  { left: 70%; transform: translateY(0); }
 
-  /* Crouch before hop 4 */
-  72%  { left: 70%; transform: translateY(2px); }
-  75%  { left: 76%; transform: translateY(-25px); }
-  78%  { left: 82%; transform: translateY(-40px); }
-  81%  { left: 87%; transform: translateY(-25px); }
-  84%  { left: 90%; transform: translateY(0); }
-  85%  { left: 90%; transform: translateY(-4px); }
-  86%  { left: 90%; transform: translateY(0); }
+  /* Hop 4: dot 4 -> dot 5 */
+  70%  { left: 75%; transform: translateY(-20px); }
+  73%  { left: 80%; transform: translateY(-35px); }
+  76%  { left: 85%; transform: translateY(-20px); }
+  79%  { left: 90%; transform: translateY(0); }
 
   100% { left: 90%; transform: translateY(0); opacity: 1; }
 }
 
-/* Wing flap synced to each hop's airtime */
+/* Wing flap synced to airtime */
 @keyframes chickFlap {
-  0%, 6%   { transform: scaleX(1) rotate(0deg); }
+  0%, 7%   { transform: scaleX(1) rotate(0deg); }
 
-  /* Hop 1 flap */
-  9%   { transform: scaleX(1.15) rotate(-8deg); }
+  9%   { transform: scaleX(1.15) rotate(-6deg); }
   11%  { transform: scaleX(0.9) rotate(6deg); }
-  13%  { transform: scaleX(1.15) rotate(-8deg); }
+  13%  { transform: scaleX(1.15) rotate(-6deg); }
   15%  { transform: scaleX(0.9) rotate(6deg); }
-  18%  { transform: scaleX(1) rotate(0deg); }
+  19%  { transform: scaleX(1) rotate(0deg); }
 
-  /* Rest */
-  28%  { transform: scaleX(1) rotate(0deg); }
+  27%  { transform: scaleX(1) rotate(0deg); }
+  29%  { transform: scaleX(1.15) rotate(-6deg); }
+  31%  { transform: scaleX(0.9) rotate(6deg); }
+  33%  { transform: scaleX(1.15) rotate(-6deg); }
+  35%  { transform: scaleX(0.9) rotate(6deg); }
+  39%  { transform: scaleX(1) rotate(0deg); }
 
-  /* Hop 2 flap */
-  31%  { transform: scaleX(1.15) rotate(-8deg); }
-  33%  { transform: scaleX(0.9) rotate(6deg); }
-  35%  { transform: scaleX(1.15) rotate(-8deg); }
-  37%  { transform: scaleX(0.9) rotate(6deg); }
-  40%  { transform: scaleX(1) rotate(0deg); }
-
-  50%  { transform: scaleX(1) rotate(0deg); }
-
-  /* Hop 3 flap */
-  53%  { transform: scaleX(1.15) rotate(-8deg); }
+  47%  { transform: scaleX(1) rotate(0deg); }
+  49%  { transform: scaleX(1.15) rotate(-6deg); }
+  51%  { transform: scaleX(0.9) rotate(6deg); }
+  53%  { transform: scaleX(1.15) rotate(-6deg); }
   55%  { transform: scaleX(0.9) rotate(6deg); }
-  57%  { transform: scaleX(1.15) rotate(-8deg); }
-  59%  { transform: scaleX(0.9) rotate(6deg); }
-  62%  { transform: scaleX(1) rotate(0deg); }
+  59%  { transform: scaleX(1) rotate(0deg); }
 
-  72%  { transform: scaleX(1) rotate(0deg); }
-
-  /* Hop 4 flap */
-  75%  { transform: scaleX(1.15) rotate(-8deg); }
-  77%  { transform: scaleX(0.9) rotate(6deg); }
-  79%  { transform: scaleX(1.15) rotate(-8deg); }
-  81%  { transform: scaleX(0.9) rotate(6deg); }
-  84%  { transform: scaleX(1) rotate(0deg); }
+  67%  { transform: scaleX(1) rotate(0deg); }
+  69%  { transform: scaleX(1.15) rotate(-6deg); }
+  71%  { transform: scaleX(0.9) rotate(6deg); }
+  73%  { transform: scaleX(1.15) rotate(-6deg); }
+  75%  { transform: scaleX(0.9) rotate(6deg); }
+  79%  { transform: scaleX(1) rotate(0deg); }
 
   100% { transform: scaleX(1) rotate(0deg); }
 }
