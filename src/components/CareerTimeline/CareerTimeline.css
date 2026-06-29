@@ -183,14 +183,14 @@
   bottom: 14px;
   left: 10%;
   z-index: 10;
-  animation: chickHop 6s ease 1.2s forwards;
+  animation: chickRun 5s linear 1.2s forwards;
   opacity: 0;
 }
 
 .walking-chick .chick-emoji {
   font-size: 1.6rem;
   display: inline-block;
-  animation: chickFlap 6s ease 1.2s forwards;
+  animation: chickWaddle 0.25s ease-in-out infinite;
 }
 
 .walking-chick.arrived .chick-emoji {
@@ -208,79 +208,16 @@
 }
 
 /* Animations */
-@keyframes chickHop {
-  0%   { left: 10%; transform: translateY(0); opacity: 0; }
-  2%   { opacity: 1; }
-
-  /* Hop 1: dot 1 -> dot 2 — smooth arc */
-  7%   { left: 10%; transform: translateY(0); }
-  10%  { left: 15%; transform: translateY(-20px); }
-  13%  { left: 20%; transform: translateY(-35px); }
-  16%  { left: 25%; transform: translateY(-20px); }
-  19%  { left: 30%; transform: translateY(0); }
-
-  /* Pause */
-  27%  { left: 30%; transform: translateY(0); }
-
-  /* Hop 2: dot 2 -> dot 3 */
-  30%  { left: 35%; transform: translateY(-20px); }
-  33%  { left: 40%; transform: translateY(-35px); }
-  36%  { left: 45%; transform: translateY(-20px); }
-  39%  { left: 50%; transform: translateY(0); }
-
-  /* Pause */
-  47%  { left: 50%; transform: translateY(0); }
-
-  /* Hop 3: dot 3 -> dot 4 */
-  50%  { left: 55%; transform: translateY(-20px); }
-  53%  { left: 60%; transform: translateY(-35px); }
-  56%  { left: 65%; transform: translateY(-20px); }
-  59%  { left: 70%; transform: translateY(0); }
-
-  /* Pause */
-  67%  { left: 70%; transform: translateY(0); }
-
-  /* Hop 4: dot 4 -> dot 5 */
-  70%  { left: 75%; transform: translateY(-20px); }
-  73%  { left: 80%; transform: translateY(-35px); }
-  76%  { left: 85%; transform: translateY(-20px); }
-  79%  { left: 90%; transform: translateY(0); }
-
-  100% { left: 90%; transform: translateY(0); opacity: 1; }
+@keyframes chickRun {
+  0%   { left: 10%; opacity: 0; }
+  3%   { opacity: 1; }
+  100% { left: 90%; opacity: 1; }
 }
 
-/* Wing flap synced to airtime */
-@keyframes chickFlap {
-  0%, 7%   { transform: scaleX(1) rotate(0deg); }
-
-  9%   { transform: scaleX(1.15) rotate(-6deg); }
-  11%  { transform: scaleX(0.9) rotate(6deg); }
-  13%  { transform: scaleX(1.15) rotate(-6deg); }
-  15%  { transform: scaleX(0.9) rotate(6deg); }
-  19%  { transform: scaleX(1) rotate(0deg); }
-
-  27%  { transform: scaleX(1) rotate(0deg); }
-  29%  { transform: scaleX(1.15) rotate(-6deg); }
-  31%  { transform: scaleX(0.9) rotate(6deg); }
-  33%  { transform: scaleX(1.15) rotate(-6deg); }
-  35%  { transform: scaleX(0.9) rotate(6deg); }
-  39%  { transform: scaleX(1) rotate(0deg); }
-
-  47%  { transform: scaleX(1) rotate(0deg); }
-  49%  { transform: scaleX(1.15) rotate(-6deg); }
-  51%  { transform: scaleX(0.9) rotate(6deg); }
-  53%  { transform: scaleX(1.15) rotate(-6deg); }
-  55%  { transform: scaleX(0.9) rotate(6deg); }
-  59%  { transform: scaleX(1) rotate(0deg); }
-
-  67%  { transform: scaleX(1) rotate(0deg); }
-  69%  { transform: scaleX(1.15) rotate(-6deg); }
-  71%  { transform: scaleX(0.9) rotate(6deg); }
-  73%  { transform: scaleX(1.15) rotate(-6deg); }
-  75%  { transform: scaleX(0.9) rotate(6deg); }
-  79%  { transform: scaleX(1) rotate(0deg); }
-
-  100% { transform: scaleX(1) rotate(0deg); }
+@keyframes chickWaddle {
+  0%   { transform: translateY(0) rotate(-5deg); }
+  50%  { transform: translateY(-3px) rotate(5deg); }
+  100% { transform: translateY(0) rotate(-5deg); }
 }
 
 @keyframes chickCelebrate {
